@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+    <script>
+        let valorPantalla = '';
+
+        function actualizarPantalla(valor) {
+            valorPantalla += valor;
+            document.getElementById('pantalla').value = valorPantalla;
+            document.getElementById('valorEntrada').value = valorPantalla;
+        }
+
+        function borrarPantalla() {
+            valorPantalla = '';
+            document.getElementById('pantalla').value = valorPantalla;
+            document.getElementById('valorEntrada').value = valorPantalla;
+        }
+
+        function calcular() {
+            try {
+                valorPantalla = eval(valorPantalla).toString();
+            } catch (e) {
+                valorPantalla = 'Error';
+            }
+            document.getElementById('pantalla').value = valorPantalla;
+            document.getElementById('valorEntrada').value = valorPantalla;
+        }
+    </script>
+</head>
+<body>
+    <h1>CALCULADORA</h1>
+    <div class="cuadroB">
+        <form action="calcular.php" method="post">
+            <label for="pantalla" class="sr-only"></label>
+            <input type="text" id="pantalla" name="pantalla" title="Pantalla de la calculadora" placeholder="0" readonly>
+            <input type="hidden" id="valorEntrada" name="valorEntrada" value="">
+            <div class="numeros">
+                <button type="button" class="boton" onclick="actualizarPantalla('1')">1</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('2')">2</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('3')">3</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('4')">4</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('5')">5</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('6')">6</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('7')">7</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('8')">8</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('9')">9</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('0')">0</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('+')">+</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('-')">-</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('*')">*</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('/')">/</button>
+                <button type="button" class="boton" onclick="actualizarPantalla('.')">.</button>
+                <button type="button" class="boton" onclick="borrarPantalla()">C</button>
+                <!-- <button type="button" class="boton calcular" onclick="calcular()">=</button> -->
+            </div>
+            <br>
+            <button type="submit" class="boton calcular" onclick="calcular()">Mostrar Valor</button>
+        </form>
+        
+    </div>
+</body>
+</html>
